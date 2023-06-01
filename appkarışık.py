@@ -47,12 +47,13 @@ def main():
                   response = openai.ChatCompletion.create(
                       model="gpt-3.5-turbo",
                       messages=[
-                          {"role": "system", "content": f"Your task is to summarize the following text:\n\n{chunk}"},
+                          {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
                       ],
                       max_tokens=2000
                   )
                   summary = response['choices'][0]['message']['content'].strip()
                   summaries.append(summary)
+                  st.header("İLK GRUP ÖZETLERİ:")
                   st.write(summary)
                   tokens_used = response["usage"]["total_tokens"]
                   total_tokens_used += tokens_used
@@ -90,12 +91,13 @@ def main():
                     response = openai.ChatCompletion.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": f"Your task is to summarize the following text:\n\n{chunk}"},
+                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
                         ],
                         max_tokens=2000
                     )
 
                     summary2 = response['choices'][0]['message']['content'].strip()
+                    st.header("İKİNCİ GRUP ÖZETLERİ:")
                     st.write(summary2)
                     summaries2.append(summary2)
                     tokens_used = response["usage"]["total_tokens"]
@@ -134,12 +136,13 @@ def main():
                     response = openai.ChatCompletion.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": f"Your task is to summarize the following text:\n\n{chunk}"},
+                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
                         ],
                         max_tokens=2000
                     )
 
                     summary3 = response['choices'][0]['message']['content'].strip()
+                    st.header("ÜÇÜNCÜ GRUP ÖZETLERİ:")
                     st.write(summary3)
                     summaries3.append(summary3)
                     tokens_used = response["usage"]["total_tokens"]
@@ -173,12 +176,13 @@ def main():
                 response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": f"Your task is to summarize the following text:\n\n{' '.join(summaries3)}"},
+                        {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{' '.join(summaries3)}"},
                     ],
                     max_tokens=2000
                 )
 
                 summary4 = response['choices'][0]['message']['content'].strip()
+                st.header("SON ÖZET:")
                 st.write(summary4)
                 total_tokens_used += tokens_used
                 chunk_count += 1
