@@ -40,20 +40,20 @@ def main():
             chunk_count = 0
             # iterate over each chunk and summarize it
 
-        
+            st.header("İLK GRUP ÖZETLERİ:")
             for chunk in chunks:
               while True: # keep trying until the request succeeds
                 try:
                   response = openai.ChatCompletion.create(
                       model="gpt-3.5-turbo",
                       messages=[
-                          {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
+                          {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language(Don't give me any English text. İf important you can give me technical terms in english by specifying the Turkish Meaning in parantheses.):\n\n{chunk}"},
                       ],
                       max_tokens=2000
                   )
                   summary = response['choices'][0]['message']['content'].strip()
                   summaries.append(summary)
-                  st.header("İLK GRUP ÖZETLERİ:")
+                  
                   st.write(summary)
                   tokens_used = response["usage"]["total_tokens"]
                   total_tokens_used += tokens_used
@@ -85,19 +85,19 @@ def main():
               summaries2 = []
 
           # THIS IS FOR SECOND TIME SPLIT SUMMARY TEXT INTO CHUNKS.
+              st.header("İKİNCİ GRUP ÖZETLERİ:")
               for chunk in chunks2:
                 while True:
                   try:
                     response = openai.ChatCompletion.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
+                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language(Don't give me any English text. İf important you can give me technical terms in english by specifying the Turkish Meaning in parantheses.):\n\n{chunk}"},
                         ],
                         max_tokens=2000
                     )
 
                     summary2 = response['choices'][0]['message']['content'].strip()
-                    st.header("İKİNCİ GRUP ÖZETLERİ:")
                     st.write(summary2)
                     summaries2.append(summary2)
                     tokens_used = response["usage"]["total_tokens"]
@@ -130,19 +130,20 @@ def main():
               summaries3 = []
 
           # THIS IS FOR THIRD TIME SPLIT SUMMARY TEXT INTO CHUNKS.
+              st.header("ÜÇÜNCÜ GRUP ÖZETLERİ:")
               for chunk in chunks3:
                 while True:
                   try:
                     response = openai.ChatCompletion.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{chunk}"},
+                            {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language(Don't give me any English text. İf important you can give me technical terms in english by specifying the Turkish Meaning in parantheses.):\n\n{chunk}"},
                         ],
                         max_tokens=2000
                     )
 
                     summary3 = response['choices'][0]['message']['content'].strip()
-                    st.header("ÜÇÜNCÜ GRUP ÖZETLERİ:")
+                    
                     st.write(summary3)
                     summaries3.append(summary3)
                     tokens_used = response["usage"]["total_tokens"]
@@ -176,7 +177,7 @@ def main():
                 response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language:\n\n{' '.join(summaries3)}"},
+                        {"role": "system", "content": f"Your task is to summarize the following text in Turkish Language(Don't give me any English text. İf important you can give me technical terms in english by specifying the Turkish Meaning in parantheses.):\n\n{' '.join(summaries3)}"},
                     ],
                     max_tokens=2000
                 )
