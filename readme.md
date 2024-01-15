@@ -1,37 +1,18 @@
-# Langchain Ask PDF (Tutorial)
+#Ask your PDF: Streamlit and OpenAI Application
+##Overview
+This project is a Streamlit web application that uses OpenAI's GPT model to summarize PDF documents. The application allows users to upload a PDF, then extracts the text and generates summaries in Turkish.
 
->You may find the step-by-step video tutorial to build this application [on Youtube](https://youtu.be/wUAUdEw5oxM).
-
-This is a Python application that allows you to load a PDF and ask questions about it using natural language. The application uses a LLM to generate a response about your PDF. The LLM will not answer questions unrelated to the document.
-
-## How it works
-
-The application reads the PDF and splits the text into smaller chunks that can be then fed into a LLM. It uses OpenAI embeddings to create vector representations of the chunks. The application then finds the chunks that are semantically similar to the question that the user asked and feeds those chunks to the LLM to generate a response.
-
-The application uses Streamlit to create the GUI and Langchain to deal with the LLM.
-
-
-## Installation
-
-To install the repository, please clone this repository and install the requirements:
-
-```
-pip install -r requirements.txt
-```
-
-You will also need to add your OpenAI API key to the `.env` file.
-
-## Usage
-
-To use the application, run the `main.py` file with the streamlit CLI (after having installed streamlit): 
-
-```
-streamlit run app.py
-```
-
-
-## Contributing
-
-This repository is for educational purposes only and is not intended to receive further contributions. It is supposed to be used as support material for the YouTube tutorial that shows how to build the project.
-
-
+#What the Code Does
+Uploads PDF: Users can upload a PDF file to the application.  
+Extracts Text: The text is extracted from the PDF using pdfplumber.  
+Summarizes Text: The extracted text is sent to OpenAI's GPT model, which generates summaries in Turkish. This process is done in multiple stages to refine the summary.  
+Displays Summaries: The application displays these summaries on the web page.  
+Handles Errors: Includes error handling for issues like rate limits and connection errors with OpenAI.  
+#What I Learned
+Streamlit for Web Apps: Learned how to use Streamlit to create interactive web applications.  
+Text Extraction from PDF: Gained experience in extracting text from PDF files using pdfplumber.  
+Integrating OpenAI API: Learned to integrate and use OpenAI's API for text summarization.  
+Handling API Limitations: Developed skills in handling API limitations like rate limits and errors.  
+Iterative Summarization Process: Understood the process of breaking down text into chunks for summarization and refining the summary in stages.  
+Simple and Efficient  
+This project demonstrates a simple yet efficient way to use AI for practical purposes like summarizing documents. It's a great example of how different technologies can be combined to create useful applications.  
